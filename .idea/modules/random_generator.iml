@@ -12,5 +12,12 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.13.5:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.typelevel:spire_2.13:0.17.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.typelevel:spire-util_2.13:0.17.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.typelevel:spire-platform_2.13:0.17.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.typelevel:spire-macros_2.13:0.17.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.typelevel:cats-kernel_2.13:2.1.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.typelevel:algebra_2.13:2.0.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scala-lang.modules:scala-collection-compat_2.13:2.2.0:jar" level="project" />
   </component>
 </module>
