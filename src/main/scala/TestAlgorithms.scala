@@ -3,9 +3,13 @@ import scala.collection.mutable.ArrayBuffer
 
 object TestAlgorithms {
   def test1Bits(seq: Seq[Boolean]) = {
-    val trueCount = seq.count(e => e)
-    println(s"test1Bits: ones $trueCount, zeros: ${seq.length - trueCount}")
-    trueCount >= 9654 && trueCount <= 10346
+    if(seq.length > 0) {
+      val trueCount = seq.count(e => e)
+      val k = trueCount.toDouble / seq.length.toDouble
+      k >= 0.4827 && k <= 0.5173
+    } else {
+      false
+    }
   }
   def test1Doubles(seq: Seq[Double]) = test1Bits(Serializer.serializeDoubleSeqToBits(seq))
   def test1Ints(seq: Seq[Int]) = test1Bits(Serializer.serializeIntSeqToBits(seq))

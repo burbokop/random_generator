@@ -19,6 +19,23 @@ object Serializer {
     bos.toByteArray
   }
 
+  def serializeIntToNormalizedBits(i: Int): Array[Boolean] = {
+    val bos = new ByteArrayOutputStream
+    val dos = new DataOutputStream(bos)
+    dos.writeInt(i)
+    dos.flush
+    val ba = bos.toByteArray.map(byteToBooleans).reduce(_ ++ _).toArray
+    var foundData = false
+    (for(b <- ba) yield {
+      if (b == true) {
+        foundData = true
+      }
+      if(foundData) Some(b)
+      else None
+    })
+      .filter(_.isDefined).map(_.get)
+  }
+
   def serializeDoubleSeq(seq: Seq[Double]) = seq.map(v => serializeDouble(v)).reduce(_ ++ _)
 
   def byteToBooleans(b: Byte) =
@@ -31,4 +48,7 @@ object Serializer {
 
   def serializeDoubleSeqToBits(seq: Seq[Double]) = serializeDoubleSeq(seq).flatMap(byteToBooleans)
   def serializeIntSeqToBits(seq: Seq[Int]) = serializeIntSeq(seq).flatMap(byteToBooleans)
+
+  def serializeIntSeqToNormalizedBits(seq: Seq[Int]): Seq[Boolean] =
+    seq.map(v => serializeIntToNormalizedBits(v)).reduce[Array[Boolean]](_ ++ _)
 }
